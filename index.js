@@ -8,7 +8,8 @@ const cardImgs = [
 /*
 1. insert Cards 🃏
 2. click play game and shuffle cards
-3. generate card randomly
+3. generate card randomly and insert again to dom
+4. theme
 */
 
 const insertCards = (cards, isFlip) => {
@@ -86,3 +87,42 @@ const shuffleCard = () => {
 
 // start the game
 playGameBtn.addEventListener('click', shuffleCard);
+
+// theme
+const moon = document.querySelector('.moon');
+const sun = document.querySelector('.sun');
+
+const toggleTheme = () => {
+  const doc = document.documentElement;
+  const currentTheme = doc.className;
+  const theme = currentTheme === 'light' ? 'dark' : 'light';
+
+  doc.className = theme;
+  localStorage.setItem('theme', theme);
+
+  // change theme toggler icon
+  if (theme === 'light') {
+    moon.style.display = 'block';
+    sun.style.display = 'none';
+  } else {
+    moon.style.display = 'none';
+    sun.style.display = 'block';
+  }
+};
+
+(() => {
+  const theme = localStorage.getItem('theme') || 'light';
+
+  document.documentElement.className = theme;
+
+  if (theme === 'light') {
+    moon.style.display = 'block';
+    sun.style.display = 'none';
+  } else {
+    moon.style.display = 'none';
+    sun.style.display = 'block';
+  }
+})();
+
+const toggleMode = document.querySelector('.toggle-mode');
+toggleMode.addEventListener('click', toggleTheme);

@@ -1,15 +1,20 @@
 :root {
   --card-width: 165px;
   --card-height: 200px;
-  --border-color: #cfcfcf;
+}
 
-  /* --text-primary: #f7f7f8;
-  --main-bg: #424242; */
-
+.light {
   --main-bg: #e4e4e4;
   --text-primary: #424242;
+  --btn-hover: #cdcdcd;
+  --border-color: #cfcfcf;
+}
 
-  --btn-hover: #d7d7d7;
+.dark {
+  --main-bg: #424242;
+  --text-primary: #f7f7f8;
+  --btn-hover: #545454;
+  --border-color: #626262;
 }
 
 * {
@@ -27,9 +32,30 @@ body {
   height: 100vh;
 }
 
-header .title {
+header {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.header-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.header-title-container .title {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-right: 1rem;
+}
+
+.toggle-mode {
+  cursor: pointer;
+}
+
+.sun {
+  display: none;
 }
 
 main {
@@ -53,7 +79,7 @@ main {
   cursor: pointer;
   transition: 0.3s linear;
 
-  transform: translate(-300px, -700px);
+  transform: translate(-700px, -700px);
   animation: flyDown 1s ease-in-out forwards;
 }
 
@@ -113,9 +139,6 @@ main {
 }
 
 .top-bar {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,10 +173,11 @@ main {
 }
 
 .desc {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   font-size: 17px;
   opacity: 0;
   animation: fade-in 0.3s linear forwards 4.3s;
+  text-align: center;
 }
 
 .play-game {
@@ -176,5 +200,20 @@ main {
 @keyframes fade-in {
   100% {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header-title-container .title {
+    font-size: 1.7rem;
+  }
+
+  .card-container {
+    row-gap: 1.5rem;
+  }
+
+  :root {
+    --card-width: 150px;
+    --card-height: 170px;
   }
 }
