@@ -78,6 +78,9 @@ main {
   width: var(--card-width);
   cursor: pointer;
   transition: 0.3s linear;
+  border: none;
+  outline: none;
+  background: transparent;
 
   transform: translate(-700px, -700px);
   animation: flyDown 1s ease-in-out forwards;
