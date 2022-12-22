@@ -21,7 +21,7 @@ const scoreBadge = document.querySelector('.score-badge');
 const roundBadge = document.querySelector('.round-badge');
 
 // default variables
-const ACE_ID = 4;
+const ACE_ID = 1;
 let SCORE = 0;
 let ROUND = 1;
 
