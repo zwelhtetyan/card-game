@@ -1,8 +1,8 @@
 const cardImgs = [
-  { id: 1, imagePath: './images/card-KingHearts.png' },
-  { id: 2, imagePath: './images/card-JackClubs.png' },
+  { id: 1, imagePath: './images/card-AceSpades.png' },
+  { id: 2, imagePath: './images/card-KingHearts.png' },
   { id: 3, imagePath: './images/card-QueenDiamonds.png' },
-  { id: 4, imagePath: './images/card-AceSpades.png' },
+  { id: 4, imagePath: './images/card-JackClubs.png' },
 ];
 
 /*
@@ -30,18 +30,31 @@ const insertCards = (cardsArr, isFlip) => {
 
   const classes = isFlip ? ' flip' : '';
 
+  //   const html = cardsArr
+  //     .map(
+  //       (img) => `<button disabled class='card'>
+  //   <div class='card-inner${classes}' id=${img.id}>
+  //     <div class='card-front'>
+  //       <img src=${img.imagePath} alt='' class='card-img' />
+  //     </div>
+  //     <div class='card-back'>
+  //       <img src='./images/card-back-Blue.png' alt='' class='card-img' />
+  //     </div>
+  //   </div>
+  // </button>`
+  //     )
+  //     .join('');
+
   const html = cardsArr
     .map(
-      (img) => `<button disabled class='card'>
-  <div class='card-inner${classes}' id=${img.id}>
-    <div class='card-front'>
-      <img src=${img.imagePath} alt='' class='card-img' />
-    </div>
-    <div class='card-back'>
-      <img src='./images/card-back-Blue.png' alt='' class='card-img' />
-    </div>
-  </div>
-</button>`
+      (img) => `<button class="card${classes}" id=${img.id} disabled>
+      <div class="front">
+        <img src="${img.imagePath}" alt="" class="card-img" />
+      </div>
+      <div class="back">
+        <img src="./images/card-back-Blue.png" alt="" class="card-img" />
+      </div>
+    </button>`
     )
     .join('');
 
@@ -66,29 +79,27 @@ const insertCards = (cardsArr, isFlip) => {
 insertCards(cardImgs, false);
 
 const flipCard = (cards, card) => {
-  const cardInner = card.childNodes[1];
-  cardInner.classList.remove('flip');
+  card.classList.remove('flip');
   cards.forEach((card) => (card.disabled = true));
-  chooseCard(cardInner.id);
+  chooseCard(card.id);
   flipAllCard(cards);
 
   if (ROUND <= 3) {
     restartNewRound(); //restart new round
   } else {
-    setTimeout(gameOverAction, 2500);
-    // gameOverAction(); //  game over
+    setTimeout(gameOverAction, 2500); // game over
   }
 };
 
 const flipAllCard = (cards) => {
   const innerCardsToFlip = [...cards].filter((card) =>
-    card.childNodes[1].classList.contains('flip')
+    card.classList.contains('flip')
   );
 
   let idx = 0;
 
   const INTERVAL = setInterval(() => {
-    innerCardsToFlip[idx].childNodes[1].classList.remove('flip');
+    innerCardsToFlip[idx].classList.remove('flip');
 
     idx++;
 
@@ -157,10 +168,9 @@ const shuffleCard = () => {
   const lefts = ['-10rem', '-8rem', '-6rem', '-4rem', '-2rem', '0rem', '2rem'];
   const tops = ['0rem', '2rem', '4rem', '6rem', '8rem', '10rem', '12rem'];
 
-  const innerCards = document.querySelectorAll('.card-inner');
   const cards = document.querySelectorAll('.card');
 
-  innerCards.forEach((card) => card.classList.add('flip'));
+  cards.forEach((card) => card.classList.add('flip'));
 
   const INTERVAL = setInterval(() => {
     cards.forEach((card) => {
