@@ -30,21 +30,6 @@ const insertCards = (cardsArr, isFlip) => {
 
   const classes = isFlip ? ' flip' : '';
 
-  //   const html = cardsArr
-  //     .map(
-  //       (img) => `<button disabled class='card'>
-  //   <div class='card-inner${classes}' id=${img.id}>
-  //     <div class='card-front'>
-  //       <img src=${img.imagePath} alt='' class='card-img' />
-  //     </div>
-  //     <div class='card-back'>
-  //       <img src='./images/card-back-Blue.png' alt='' class='card-img' />
-  //     </div>
-  //   </div>
-  // </button>`
-  //     )
-  //     .join('');
-
   const html = cardsArr
     .map(
       (img) => `<button class="card${classes}" id=${img.id} disabled>
