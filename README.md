@@ -5,4 +5,4 @@
 ![card-game](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/or7aqil2ymz0xw46d5hu.png)
 
 ### Tech Stack
-- HTML, CSS, JAVASCRIPT
+- [x] HTML, CSS, JAVASCRIPT
